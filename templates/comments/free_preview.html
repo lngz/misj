@@ -1,0 +1,27 @@
+<h2>预览</h2>
+<form action="../postfree/" method="post">
+    {% if comment_form.has_errors %}
+    <p><strong style="color: red;">错误</strong></p>
+    {% else %}
+    <p>{{ comment.comment|escape }}</p>
+    <p>Name:{{ comment.person_name }}</p>
+    <input type="submit" name="post" value="Submit" />
+    <h2></h2>
+    {% endif %}
+
+    {% if comment_form.person_name.errors %}
+    {{ comment_form.person_name.html_error_list }}
+    {% endif %}
+    <p><label for="id_person_name">Name:</label> {{ comment_form.person_name }}</p>
+
+    {% if comment_form.comment.errors %}
+    {{ comment_form.comment.html_error_list }}
+    {% endif %}
+    <p><label for="id_person_name">Content:</label><br />{{ comment_form.comment }}</p>
+    <input type="hidden" name="options" value="{{ options }}" />
+    <input type="hidden" name="target" value="{{ target }}" />
+    <input type="hidden" name="gonzo" value="{{ hash }}" />
+    <input type="hidden" name="url" value="{{ url }}" />
+    <p><input type="submit" name="preview" value="preview" /></p>
+</form>
+

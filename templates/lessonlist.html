@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block left%}
+<!-- 日历表-->
+<center>
+{{caltext}}
+</center>
+{% endblock %}
+{% block top%}
+
+
+{% if schedule %}
+
+{% for sch_list in schedule %}
+
+
+{% get_free_comment_count for lesson.schedule sch_list.id as comment_count %}
+{% get_free_comment_list for lesson.schedule sch_list.id  as comment_list %}
+
+
+课程：{{sch_list.Teach_content }}<br/>
+<!-- 
+
+{{sch_list.teacher 		        }}|-->
+班级：{{sch_list.Class 			    }}|
+
+{{sch_list.Teach_time 		    }}<br/>
+教学评价：{{sch_list.teach_memo 		    }} 
+<a href='/teacher/lesson/comment/{{sch_list.id}}/edit/'>添加教学评价 </a><br/>
+
+岩琦老师评价：{{ comment_count }} Comments<br>
+{% for comment in comment_list %}
+
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+<hr>
+{% endfor %}
+
+{%endif%}
+
+{% if course %}
+
+{% for course_list in course %}
+
+
+<a href="/teacher/lesson/comment/{{course_list.id}}">{{course_list.courcename }}</a><br/>
+
+<hr>
+{% endfor %}
+
+{%endif%}
+
+
+
+
+
+{% endblock %}

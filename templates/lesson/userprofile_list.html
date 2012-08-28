@@ -1,0 +1,27 @@
+{% extends "managebase.html" %}
+
+{% block top%}
+
+{% if object_list %}
+
+<ul id="user-list" class="no-margin no-padding">
+{% for userprofile_dict in object_list %}
+{{userprofile_dict.id}}  |
+{{userprofile_dict.user}}  |
+{{userprofile_dict.loginname}}  |
+{{userprofile_dict.username}}  |
+{{userprofile_dict.Class}}  |
+{{userprofile_dict.contact}}  |
+{{userprofile_dict.email}}  |
+
+<a href='/manage/teacher/{{userprofile_dict.user.id}}'>查看教师教学</a>
+<a href='/manage/teacher/edit/{{userprofile_dict.id}}'>编辑</a>
+<a href='/manage/teacher/assign/{{userprofile_dict.id}}'>分配班级 </a>
+<br>
+{% endfor %}
+</ul>
+
+{%endif%}
+
+<a href='/manage/teacher/regist/'>注册老师</a>
+{% endblock %}

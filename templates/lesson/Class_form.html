@@ -1,0 +1,34 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+{% if form.error_dict %}
+<p>.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+
+<form action="." method="post">
+    
+
+<p>班级名称      :{{form.classname 		       }}    </p>
+<p>课程内容      :{{form.description  	           }}</p>
+<p>学员数量      :{{form.student_amount 	   }}    </p>
+<p>课时总数      :{{form.teach_time 		   }}    </p>
+<p>班级地点      :{{form.class_place 	       }}    </p>
+<p>开课时间      :{{form.begin_time 		   }}    </p>
+<p>结课时间      :{{form.end_time 		       }}    </p>
+<p>合作方        :{{form.operator_company      }}    </p>
+<p>合作方联系人  :{{form.operator_name 	        }}</p>  
+<p>合作方联系方式:{{form.operator_contact      }}    </p>
+
+<p>管理对接      :{{form.communicater 	           }}</p>
+
+
+
+
+<input type="submit" value="submit" />
+<INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</form>
+
+{% endblock %}

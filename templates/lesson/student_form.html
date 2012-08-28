@@ -1,0 +1,47 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+{% if form.error_dict %}
+<p>.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+
+<form action="." method="post">
+    
+
+<p>学员姓名      :{{form.name 			    }}    </p>
+<p>年龄          :{{form.age 			        }}</p>
+<p>学员毕业学校  :{{form.colledge 		    }}    </p>
+<p>专业          :{{form.majar 			    }}    </p>
+<p>籍贯          :{{form.hometown 		    }}    </p>
+<p>联系电话(手机):{{form.cellphone 		    }}    </p>
+<p>联系电话(固定):{{form.sitephone 		    }}    </p>
+<p>学员email     :{{form.email 			    }}    </p>
+<p>班级          :{{form.classname  		    }}</p>  
+<p>学员简介      :{{form.inro 			    }}    </p>
+<p>日语水平      :{{form.jp_level 		    }}    </p>
+<p>服务费总额    :{{form.Servicecharges       }}  </p>
+<p>培训费      :{{form.trainingcharge       }}  </p>
+
+
+<p>保证金总额    :{{form.Margin  		        }}</p>
+<p>交款1金额     :{{form.amount1 		        }}</p>
+<p>交款1项目     :{{form.item1 			    }}    </p>
+<p>交款1收据     :{{form.Receipts1 		    }}    </p>
+<p>交款1收款人   :{{form.recepter1 		    }}    </p>
+<p>交款2金额     :{{form.amount2 		        }}</p>
+<p>交款2项目     :{{form.item2  			    }}</p>  
+<p>交款2收据     :{{form.Receipts2 		    }}    </p>
+<p>交款2收款人   :{{form.recepter2 		    }}    </p>
+
+
+
+
+
+<input type="submit" value="submit" /> <INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</form>
+
+
+{% endblock %}

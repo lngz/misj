@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block left%}
+<center><a href="/schedule/assign">指派老师课程</a><br/>
+<a href="/schedule/set">单独指派老师课程</a><br/>
+<a href="/schedule">列出所有老师课程</a><br/>    
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></center>
+{% endblock %}
+{% block top%}
+
+
+{% if schedules %}
+
+{% for schedule in schedules %}
+<a href="/schedule/{{schedule.teacher.id}}">{{schedule.teacher}}</a>
+{{schedule.Teach_content }}
+{{schedule.Teach_time    }}
+
+{{schedule.Class         }}
+<a href="/schedule/edit/{{schedule.id}}">修改</a>
+<a href="/schedule/delete/{{schedule.id}}">删除</a>
+<br/>
+{% endfor %}
+{%endif%}
+{% endblock %}

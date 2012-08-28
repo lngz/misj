@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block left%}
+<center>
+<a href="/schedule/assign">指派老师课程</a><br/>
+<a href="/schedule/set">单独指派老师课程</a><br/>
+<a href="/schedule">列出所有老师课程</a><br/>    
+
+<br/>
+<br/>
+<br/>
+
+<a href='/iwasaki/lesson/'>课程列表</a>
+
+
+
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> </center>
+{% endblock %}
+
+
+{% block top%}
+
+{% if form.error_dict %}
+<p>.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+
+<form action="." method="post">
+    
+
+<p>课程内容    :{{form.courcename         }}    </p>
+<p>课程序号    :第 {{form.course_no       }}   课 </p>
+<p>课程类别    :{{form.course_type    }}    </p>
+<p>课程所需时间:{{form.cource_time    }}    </p>
+
+
+
+<input type="submit" value="submit" />
+<INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block top%}
+{% for i in books %}
+				<a name="TemplateInfo"></a>			
+				<h1>{{ i.title }}</h1>
+				
+				{% if i.picture %}<img src="/images/{{ i.get_picture_url }}" class="float-left">{% endif %}
+				
+				<p align="right"><a href="{{ i.link }}">{{ cat.download }}</a></p>
+				<p>
+				{% if i.author %}<strong>{{ cat.author }}:</strong> {{ i.author }}<br>{% endif %}
+				{% if i.publishing %}<strong>{{ cat.publishing }}:</strong> {{ i.publishing }}<br><br>{% endif %}
+				{{ i.description }}</p>
+				<div style="clear: both;"></div>
+				<p class="post-footer align-right">
+					<a class="author">{{ i.publisher }}</a>
+					<span class="date">{{ i.created|date:"j F Y"  }}</span>
+				</p>
+{% endfor %}
+			</div>
+{% endblock %}
+
+
+

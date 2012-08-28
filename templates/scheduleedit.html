@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block top%}
+
+{% if form.error_dict %}
+<p>.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+
+<form action="." method="post">
+    
+
+<p> 课程    :{{form.Teach_content  }}</p>
+<p> 时间    :{{form.Teach_time  }}</p>
+<p> 教师    :{{form.teacher     }} </p>
+<p> 班级    :{{form.Class       }}</p>
+<input type="submit" value="submit" /> <INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</form>
+
+{% endblock %}

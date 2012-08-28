@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block top%}
+	{% ifequal news.publication "Published"%}
+    {% load comments %}
+    {% get_free_comment_list for blog.news news.id as comment_list %}
+    {% get_free_comment_count for blog.news news.id as comment_count %}
+				<a name="TemplateInfo"></a>			
+				<h1>{{ news.title }}</h1>
+				
+				<p>{{ news.body }}</p>
+				
+				<p class="post-footer align-right">
+					<a class="author">{{ news.author }}</a>
+                    <a href="#" class="comments">{{ comments }} {{ comment_count }}</a>
+					{% ifequal lang "ru" %}
+						<span class="date">{{ news.created|date:"d.m.Y" }}</span>
+					{% else %}
+						<span class="date">{{ news.created|date:"m.d.Y" }}</span>
+					{% endifequal %}
+                </p>
+
+                <h2>{{ comments }}</h2>
+                {% for comment in comment_list %}
+                <p class="post-footer">
+                <a class="author">{{ comment.person_name }}</a>
+					{% ifequal lang "ru" %}
+						<span class="date">{{ comment.submit_date|date:"d.m.Y" }} в {{ comment.submit_date|date:"h:i" }}</span>
+					{% else %}
+						<span class="date">{{ comment.submit_date|date:"m.d.Y" }} at {{ comment.submit_date|date:"h:i" }}</span>
+					{% endifequal %}
+                </p>
+                <p><code>
+                {{ comment.comment|escape }}
+                </code>
+		</p>
+                {% endfor %}
+                {% free_comment_form for blog.news news.id %}
+	{% endifequal %}
+			<div align="center">
+
+			</div>
+
+			</div>
+{% endblock %}
+
+

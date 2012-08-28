@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block top%}
+
+确认删除 
+
+{{object.courcename}}
+
+<form action="" method="post">
+<div>
+<input type="hidden" name="post" value="yes" />
+<input type="submit" value="  Yes, I'm sure " /> <INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</div>          
+</form> 
+
+
+{% endblock %}

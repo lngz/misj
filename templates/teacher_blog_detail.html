@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block top%}
+
+
+
+{% get_free_comment_count for lesson.teacher_blog blog.id as comment_count %}
+{% get_free_comment_list for lesson.teacher_blog blog.id  as comment_list %}
+
+
+{{blog.title 	    }}   作者：{{blog.teacher}} 发布时间：{{blog.time 	}}|<br/>
+<pre>{{blog.contents|escape }}</pre><br/>
+
+
+<br>
+<hr>
+<h2 id="comments">Comments</h2>
+{% for comment in comment_list %}
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+
+<h2>Post a comment</h2>
+{% free_comment_form for lesson.teacher_blog blog.id %}
+
+
+
+
+{% endblock %}

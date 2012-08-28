@@ -1,0 +1,27 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+{% if form.error_dict %}
+<p>.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+
+<form action="." method="post">
+    
+
+<p>名目         :{{form.item}}</p>
+<p>明细         :{{form.detail}}</p>
+<p>数额         :{{form.amount}}</p>
+<p>日期         :{{form.time}}</p>
+<p>所属关系     :{{form.relate}}</p>
+<p>经手人       :{{form.relater}}</p>
+<p>发票号       :{{form.fapiao}}</p>
+<p>财务收到发票 :{{form.is_receive_fapiao}}</p>
+<p>收据         :{{form.shouju}}</p>
+<p>财务收到收据 :{{form.is_receive_shouju}}</p>
+<input type="submit" value="submit" /> <INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+</form>
+
+{% endblock %}

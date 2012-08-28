@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta http-equiv="refresh" content="1;URL=/" />
+</head>
+<body>
+
+
+谢谢<br>
+
+页面将回到首页
+{% if object %}
+	<ul>
+		<li><a href="{{ object.get_absolute_url }}">View your comment</a></li>
+	</ul>
+{% endif %}
+
+    
+
+</body>
+</html>
+

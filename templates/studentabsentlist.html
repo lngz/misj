@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block top%}
+
+<p>{{stu.name}}</p>
+
+{% if scorelist %}
+<table width="90%" border="1" cellspacing="0" cellpadding="0"  bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td>面试类型</td>
+    <td>描述</td>
+    <td>成绩</td>
+  </tr>
+{% for score in scorelist %}
+<tr>
+<td>{{score.type }}                </td>
+<td>{{score.Description        }}  </td>
+<td>{{score.score    }}            </td>
+</tr>
+
+{% endfor %}
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  
+  </tr>
+
+</table>
+
+{%endif%}
+
+<br/>
+{% if absentlist %}
+<table width="90%" border="1" cellspacing="0" cellpadding="0"  bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td>缺勤课程</td>
+    <td>请假原因</td>
+    <td>缺勤日期</td>
+    <td>缺勤上下午</td>
+    
+  </tr>
+
+{% for absent in absentlist %}
+
+ <tr>
+    <td>{{absent.absent_course }}</td>
+    <td>{{absent.reason        }}</td>
+    <td>{{absent.absentdate    }}</td>
+    <td>{{absent.am_or_pm      }}</td>
+    
+  </tr>
+
+
+{% endfor %}
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+
+  </tr>
+
+</table>
+{%endif%}
+
+
+{% endblock %}

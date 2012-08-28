@@ -1,0 +1,22 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+{{ form.error_dict  }}
+　
+<form method="post" action=".">
+<table>
+  
+
+<p>登陆名:{{form.loginname 		       }}    </p>
+<p>用户姓名   :{{form.username 	    }}  </p>
+<p>用户登陆密码 :{{form.password 	   }}    </p>
+<p>用户角色   :{{form.rule_no 	          }}    </p>
+<p>用户简介   :{{form.intro 		      }}    </p>
+<p>用户联系方式 :{{form.contact 	          }}    </p>
+<p>用户email::{{form.email 		      }}    </p>
+  
+</table>
+<input type="submit" value="submit">
+</form>
+
+{% endblock %}

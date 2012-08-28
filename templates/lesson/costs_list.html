@@ -1,0 +1,27 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+
+{% if object_list %}
+
+<ul id="user-list" class="no-margin no-padding">
+{% for costs_dict in object_list %}
+<a href="edit/{{costs_dict.id}}"> {{costs_dict.item}} </a>|
+  |
+{{costs_dict.detail}}  |
+{{costs_dict.amount}}  |
+{{costs_dict.time}}  |
+{{costs_dict.relate}}  |
+{{costs_dict.relater}}  |
+{{costs_dict.fapiao}}  |
+{{costs_dict.is_receive_fapiao}}  |
+{{costs_dict.shouju}}  |
+{{costs_dict.is_receive_shouju}}  |
+<a href='/manage/costs/delete/{{costs_dict.id}}'>删除</a>
+<br>
+{% endfor %}
+
+</ul>
+{%endif%}
+<a href='/manage/costs/add/'>添加成本</a>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block left%}
+<center>
+{{caltext}}
+
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> </center>
+{% endblock %}
+
+
+{% block top%}
+
+{% if schedule %}
+
+{% for sch_list in schedule %}
+<table width="100%"  border="1">
+  <tr>
+    <td width="14%">授课时间</td>
+    <td width="17%">{{sch_list.Teach_time }}</td>
+    <td width="22%">授课内容</td>
+    <td width="47%">{{sch_list.Teach_content }}</td>
+  </tr>
+  <tr>
+    <td>授课班级</td>
+    <td>{{sch_list.Class }}|</td>
+    <td>授课老师</td>
+    <td>{{sch_list.teacher }}</td>
+  </tr>
+  <tr>
+    <td>教师总结</td>
+    <td colspan="3">{{sch_list.teach_memo }}<br/>
+        
+
+{% get_free_comment_count for lesson.schedule sch_list.id as comment_count %}
+{% get_free_comment_list for lesson.schedule sch_list.id  as comment_list %}
+
+{% for comment in comment_list %}
+
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+        
+        
+        <a href='/iwasaki/comment/{{sch_list.id }}'>回复老师</a></td>
+  </tr>
+</table>
+
+
+
+
+<br>
+{% endfor %}
+
+{%endif%}
+{% endblock %}

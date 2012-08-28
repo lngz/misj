@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block top%}
+{% if form.has_erros %}
+Error!!!
+{% endif %}
+{% if added %}
+added
+{% endif  %}
+{% if form %}
+<form action="." method="post">
+<table>
+<tr><td><label>Title:</label></td><td>{{form.title}}</td></tr>
+<tr><td><label>Lang:</label></td><td>{{form.lang}}</td></tr>
+<tr><td><label>Content:</label></td><td>{{form.content}}</td></tr>
+</table>
+<input type="submit" value="post news"/>
+</form>
+{% endif %}
+{% endblock %}

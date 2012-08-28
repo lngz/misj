@@ -1,0 +1,32 @@
+{% extends "managebase.html" %}
+{% load comments %}
+{% block top%}
+
+{% if teacher_req %}
+
+{{teacher_req.teacher     }}说：<br/>
+<a href='/manage/reply/{{teacher_req.id}}'>{{teacher_req.contents      }} </a>
+{{teacher_req.time 	}}<br/>
+
+
+{% get_free_comment_count for lesson.teacher_request teacher_req.id as comment_count %}
+{% get_free_comment_list for lesson.teacher_request teacher_req.id  as comment_list %}
+
+
+<br>
+
+{%endif%}
+{% for comment in comment_list %}
+Reply:
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+<h2>回复：</h2>
+{% free_comment_form for lesson.teacher_request teacher_req.id %}
+
+{% endblock %}
+

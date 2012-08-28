@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block top%}
+
+{% block content %}
+
+{% if form.error_dict %}
+<p>Your username and password didn't match. Please try again.
+    {{ form.error_dict  }}
+</p>
+{% endif %}
+
+<form method="post" action=".">
+<table>
+<tr><td>用户名ウーサー： </td><td>{{ form.username }}</td></tr>
+<tr><td>口令パスポト： </td><td>{{ form.password }}</td></tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}
+{% endblock %}

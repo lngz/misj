@@ -1,0 +1,47 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+
+{% if object_list %}
+
+<ul id="user-list" class="no-margin no-padding">
+{% for stu_dict in object_list %}
+{{stu_dict.id}}.  {{stu_dict.name 			    }}
+
+{{stu_dict.colledge 		    }}|
+<!--{{stu_dict.age 			        }}|
+
+{{stu_dict.majar 			    }}|
+{{stu_dict.hometown 		    }}|
+{{stu_dict.cellphone 		    }}|
+{{stu_dict.sitephone 		    }}|
+{{stu_dict.email 			    }}|
+{{stu_dict.classmame  		    }}|
+{{stu_dict.inro 			    }}|
+{{stu_dict.jp_level 		    }}|
+{{stu_dict.Servicecharges       }}|
+{{stu_dict.Margin  		        }}|
+{{stu_dict.amount1 		        }}|
+{{stu_dict.item1 			    }}|
+{{stu_dict.Receipts1 		    }}|
+{{stu_dict.recepter1 		    }}|
+{{stu_dict.amount2 		        }}|
+{{stu_dict.item2  			    }}|
+{{stu_dict.Receipts2 		    }}|
+{{stu_dict.recepter2 		    }}|
+-->
+
+
+<a href="{{stu_dict.id}}">查看成绩和考勤</a>
+<a href="{{stu_dict.id}}/score/">添加成绩</a>
+<a href="edit/{{stu_dict.id}}">编辑</a>|
+<a href='/manage/student/delete/{{stu_dict.id}}'>删除学生 </a>
+
+<br>
+{% endfor %}
+
+</ul>
+
+{%endif%}
+<a href='/manage/student/add/'>添加学生 </a>
+{% endblock %}

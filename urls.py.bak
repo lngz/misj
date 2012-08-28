@@ -1,0 +1,32 @@
+# -*- coding:utf-8 -*-
+from django.conf.urls.defaults import *
+
+from django.conf import settings
+
+urlpatterns = patterns('',
+    # Example:
+    # (r'^misj/', include('misj.foo.urls')),
+
+    # Uncomment this for admin:
+    (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    (r'^$',                 'misj.lesson.views.index',{'lang': 'cn'}),
+    (r'^(?P<lang>\w{2})/$', 'misj.lesson.views.index'),
+
+     #登陆
+    (r'^account/login/$', 'misj.lesson.views.index'),    
+    (r'^account/logout/$', 'misj.lesson.views.index'),    
+    
+    (r'^teacher/$',          'misj.lesson.views.index'),    
+    (r'^$',                  'misj.lesson.views.index'),    
+    (r'^$',                  'misj.lesson.views.index'),    
+    (r'^iwasaki/$',          'misj.lesson.views.index'),
+                             
+    (r'^manage/$',           'misj.lesson.views.index'), 
+    (r'^manage/teacher/$',   'misj.lesson.views.index'), 
+    (r'^manage/teacher/$',   'misj.lesson.views.index'),     
+    (r'^manage/student/$',   'misj.lesson.views.index'), 
+    (r'^manage/costs/$',     'misj.lesson.views.index'), 
+    (r'^manage/class/$',     'misj.lesson.views.index'), 
+    (r'^$',                  'misj.lesson.views.index'),    
+)

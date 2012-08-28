@@ -1,0 +1,38 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+
+{% if object_list %}
+
+<ul id="user-list" class="no-margin no-padding">
+{% for class_dict in object_list %}
+{{class_dict.id}}.  {{class_dict.classname 		    }}|
+{{class_dict.class_place 	        }}|
+{{class_dict.begin_time 		    }}|
+
+<!--
+{{class_dict.description  	    }}|
+{{class_dict.student_amount 	    }}|
+{{class_dict.teach_time 		    }}|
+
+{{class_dict.end_time 		    }}|
+{{class_dict.operator_company     }}|
+{{class_dict.operator_name 	    }}|
+{{class_dict.operator_contact     }}|
+{{class_dict.teacher_master 	    }}|
+{{class_dict.teacher_backup 	    }}|
+{{class_dict.communicater 	    }}|
+-->
+<a href='/manage/class/{{class_dict.id}}'>查看班里学生</a>
+<a href="edit/{{class_dict.id}}"> 编辑</a>|
+
+<a href='/manage/class/delete/{{class_dict.id}}'>删除</a>
+<br>
+{% endfor %}
+</ul>
+
+{%endif%}
+
+<a href='/manage/class/add'>添加班级</a>
+
+{% endblock %}

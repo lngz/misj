@@ -1,0 +1,18 @@
+{% if display_form %}
+<form action="/comments/postfree/" method="post">
+    <p><label for="id_person_name">Name:   {{ username }}</label> <input type="hidden" id="id_person_name" name="person_name" value='{{ username }}' />
+    </p>
+    <p><label for="id_comment">Body:</label> <textarea name="comment" id="id_comment" rows="10" cols="60"></textarea></p>
+    <input type="hidden" name="options" value="{{ options }}" />
+    <input type="hidden" name="target" value="{{ target }}" />
+    <input type="hidden" name="gonzo" value="{{ hash }}" />
+    <input type="hidden" name="url" value="{{ url }}" />
+
+    <p>
+	<div align="left">
+		<input type="submit" name="post" value="Submit" /> <INPUT TYPE="button" VALUE="Go Back" onClick="history.go(-1)">
+	</div>
+	</p>
+</form>
+{% endif %}
+

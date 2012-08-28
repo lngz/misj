@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta name="Description" content="Information architecture, Web Design, Web Standards." />
+<meta name="Keywords" content="your, keywords" />
+<link rel="SHORTCUT ICON" href="/images/favicon.ico"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Distribution" content="Global" />
+<meta name="Author" content="Alexey Afinogenov - alafin@ukr.net" />
+<meta name="Robots" content="index,follow" />
+
+<link rel="stylesheet" href="/images/Refresh.css" type="text/css" />
+
+<title>Портал Python-программистов</title>
+
+	
+</head>
+
+<body>
+<!-- wrap starts here -->
+<div id="wrap">
+		<!--header -->
+		<div id="header">			
+			<h1 id="logo-text"> *Python<span class="gray">UA*</span></h1>		
+			<h2 id="slogan">Я использую Питон когда могу, и Си -- когда должен.
+			<br/>
+			<font color="white">Эрик Реймонд</font></h2>
+				
+			<form class="search" method="post" action="#">
+				<p>
+	  			<input class="textbox" type="text" name="search_query" value="" />
+	 			<input class="button" type="submit" name="Submit" value="{{ catr.search }}" />
+				<div align="center">
+					<a href="/ru"><img src="/images/ru.png"/></a>
+					<a href="/en"><img src="/images/gb.png"/></a>
+				</div>
+				</p>
+			</form>	
+		</div>
+		
+		<!-- menu -->	
+		<div  id="menu">
+			<ul>
+{% for i in menu %}
+	{% ifequal i.name cur %}
+			<li id="current"><a href="{{ i.url }}">{{ i.name }}</a></li>
+	{% endifequal %}
+	{% ifnotequal i.name cur %}
+			<li><a href="{{ i.url }}">{{ i.name }}</a></li>			
+	{% endifnotequal %}
+{% endfor %}
+			</ul>
+		</div>					
+			
+		<!-- content-wrap starts here -->
+		<div id="content-wrap">
+			<div id="sidebar">
+					
+				<h1>{{ catr.menu }}</h1>
+				<div class="left-box">
+					<ul class="sidemenu">
+{% for i in menu %}
+						<li><a href="{{ i.url }}">{{ i.name }}</a></li>
+{% endfor %}
+					</ul>	
+				</div>
+				<h1 align="center"><a>{{ catr.accaunt }}</a></h1>
+				<div class="left-box">
+					<ul class="sidemenu">
+{% for i in acc %}
+						<li><a href="{{ i.url }}">{{ i.name }}</a></li>
+{% endfor %}
+					</ul>	
+				</div>	
+				<h1>{{ catr.art }}</h1>
+				<div class="left-box">
+					<ul class="sidemenu">
+{% for i in articles %}
+						<li><a href="{{ i.url }}">{{ i.name }}</a></li>
+{% endfor %}
+  					</ul>	
+				</div>
+				<h1 align="center"><a href="{{ ex.url }}">{{ ex.name }}</a></h1>
+				<div class="left-box">
+					{{ ex.desc }}
+				</div>	
+				
+				<h1 align="center"><a href="http://tophost.com.ua/">{{ catr.host }}</a></h1>
+				<div class="left-box" align="center">
+					<a href="http://tophost.com.ua"><img src="/images/tophost.png"/></a>
+				</div>
+				<h1 align="center">Counters</h1>
+				<div class="left-box" align="center">
+				<a href='http://lafox.net/counter/'><img src='http://lafox.net/counter/pic/?uid=475' width='88' height='31' border='0' alt='Linux coutner' title='Linux counter'></a>
+				</div>
+				<div align="center">
+				<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangoproject120x25.gif" border="0" alt="A Django project." title="A Django project." /></a>
+				</div>
+			</div>
+				
+			<div id="main">
+{% for i in news %}
+				<a name="TemplateInfo"></a>			
+				<h1>{{ i.title }}</h1>
+				
+				<p>{{ i.summary }}</p>
+				
+				<p class="post-footer align-right">
+					<a class="author">{{ i.author }}</a>
+					<a href="index.html" class="readmore">Read more</a>
+					<a href="index.html" class="comments">{{ i.get_comment_count }} comments</a>
+					<span class="date">{{ i.created|date:"j F Y"  }}</span>
+				</p>
+{% endfor %}
+
+			</div>
+		<!-- content-wrap ends here -->	
+		</div>
+					
+		<!--footer starts here-->
+		<div id="footer">
+			
+			<p>
+			&copy; 2006-2007 <strong>*PythonUA*</strong> | 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> | 
+			Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | 
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+				
+		</div>	
+
+<!-- wrap ends here -->
+</div>
+
+</body>
+</html>
+
+

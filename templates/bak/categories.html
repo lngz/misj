@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block top%}
+					<div align="center">
+						<br>
+						<font size="3" color="black"><b>{{ categ|upper }}</b></font>
+					</div>
+					<p>
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="FFFFFF">
+	<tr>
+		<td></td>
+	</tr>
+{% for i in docs %}
+	{% ifequal i.publication "Published"%}
+		<tr>
+			<td>
+				<img src="/images/page.gif" width="12" height="12"> <font size="2"><b><a href="{{ i.url }}">{{ i.title }}</a></b></font>
+			</td>
+			<td>
+				 <font size="1">&nbsp;{{ i.created }}</font>
+			</td>
+		</tr>
+	{% endifequal %}
+{% endfor %}
+</table>
+                <div>
+                
+                </div>
+			</div>
+{% endblock %}

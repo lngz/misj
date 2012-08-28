@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block top%}
+
+{{ form.error_dict  }}
+
+<style type="text/css">
+<!--            
+       textarea { width:350px; height:200px }
+-->     
+        
+</style>
+{{schedule.teacher}}さんの{{schedule.Teach_content}}<br/>
+{{schedule.teacher}}さん：<br/>
+{{schedule.teach_memo}}
+<br/>
+{% get_free_comment_count for lesson.schedule schedule.id as comment_count %}
+{% get_free_comment_list for lesson.schedule schedule.id  as comment_list %}
+
+{% for comment in comment_list %}
+回复:
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+<h2>回复：</h2>
+{% free_comment_form for lesson.schedule schedule.id %}
+
+
+{% endblock %}

@@ -1,0 +1,110 @@
+﻿
+<!DOCTYPE  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/x1/DTD/x1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/x" xml:lang="en" lang="en">
+<head>
+<link rel="SHORTCUT ICON" href="/images/favicon.ico"/>
+<meta http-equiv="Content-Type" content="text/; charset=utf-8" />
+
+<link rel="stylesheet" href="/images/Refresh.css" type="text/css" />
+
+<title>MISJ Japanese</title>
+
+	
+</head>
+
+<body>
+
+<div >
+
+<a href='/accounts/login'>login</a> | <a href='/accounts/logout'>logout</a>
+
+</div>
+
+<!-- wrap starts here -->
+<div id="wrap">
+    
+				<div class="left-box">
+
+				</div>
+
+    
+		<!--header -->
+		
+		<div id="header">			
+			<h1 id="logo-text">MISJ japanese</h1>
+			<!--<h2 id="slogan">{{ slogan.text }}
+			<br/>
+							<font  size="2"  align="right"><a href="/jp">jp</a></font> | <font size="2" align="right"><a href="/cn">cn</a></font>
+			<font color="black">{{ slogan.author }}</font></h2>-->
+			<form class="search" method="post" action="#">
+				<p>
+	  			<input class="textbox" type="text" name="search_query" value="" />
+	 			<input class="button" type="submit" name="Submit" value="Search" />
+				</p>
+			</form>	
+
+		</div>
+		<!-- menu -->	
+		<div  id="menu">
+
+		</div>					
+			
+		<!-- content-wrap starts here -->
+		
+			<div id="sidebar">
+
+				<h1 align="center">　</h1>
+				<p align="center">
+<a href='/manage/teacher/'>教师列表</a> <br/>
+
+
+<a href='/manage/student/'>学生列表</a> <br/>
+<a href='/manage/class/'>班级列表</a> <br/>
+<a href="/schedule/assign">指派老师课程</a><br/>
+
+<a href='/manage/costs/'>成本列表</a> <br/>
+<a href='/manage/costs/all'>费用合计</a> <br/>
+<a href='/admin/'>数据库管理入口</a> <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ </p>
+			</div>
+		
+				
+<div id="main">
+{% block top %}
+
+			<div align="center">
+		
+
+			</div>
+
+		<!-- content-wrap ends here -->	
+{% endblock %}
+</div>
+					
+		<!--footer starts here-->
+		<div id="footer">
+			
+			<p>
+			Copyright&copy;  <strong>MISJ</strong> | 
+			Designed by: shiziliang | 
+							</p>
+		</div>	
+
+<!-- wrap ends here -->
+</div>
+
+</body>
+</html>
+
+

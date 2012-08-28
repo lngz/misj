@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block left%}
+<center>
+<a href="/schedule/assign">指派老师课程</a><br/>
+<a href="/schedule/set">单独指派老师课程</a><br/>
+<a href="/schedule">列出所有老师课程</a><br/>    
+
+<br/>
+<br/>
+<br/>
+
+<a href='/iwasaki/lesson/'>课程列表</a>
+
+
+
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> </center>
+{% endblock %}
+
+
+{% block top%}
+
+
+{% if teacherlist %}
+<ol>
+
+
+{% for teacher in teacherlist %}
+<li>
+<a href='/iwasaki/{{teacher.user.id}}'>{{teacher.username}} 详细</a><br/>
+</li>
+{% endfor %}
+</ol>
+{%endif%}
+
+{% endblock %}

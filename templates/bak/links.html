@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block top%}
+			    <div style="width: 90%; border: 1px solid black; margin: 5px;" align="center">
+			    <strong>{{ cat.categories }}:</strong><br>
+{% for i in categories %}
+	{% ifequal i.publication "Published"%}		
+        <a href="/{{ i.lang }}/links/{{ i.slug }}">{{ i.title }}</a> 
+	{% endifequal %}
+{% endfor %}
+                </div>
+{% for i in links %}
+	{% ifequal i.publication "Published"%}
+	    <p>	
+        <a href="{{ i.url }}">{{ i.title }}</a><br>
+        {{ i.body }}
+        </p>
+	{% endifequal %}
+{% endfor %}
+                <div>
+                
+                </div>
+
+			</div>
+{% endblock %}
+{% endblock %}

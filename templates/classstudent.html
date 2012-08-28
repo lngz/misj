@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block top%}
+
+
+{% if stu_list %}
+
+{% for stu in stu_list %}
+{{stu.id}}. 
+
+<a href='/teacher/student/{{stu.id}}'>{{stu.name              }}</a>|
+{{stu.age       	    }}|
+{{stu.colledge          }}|
+{{stu.cellphone 	    }}|
+{{stu.email     	    }}|
+
+
+
+<br>
+{% endfor %}
+
+{%endif%}
+
+{% endblock %}

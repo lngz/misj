@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block top%}
+
+{{ form.error_dict  }}
+
+<form method="post" action=".">
+<table>
+　
+    {{form.as_table}}
+</table>
+<input type="submit" value="submit">
+</form>
+
+{% endblock %}

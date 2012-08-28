@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block left%}
+<center>
+{{caltext}}
+
+
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> </center>
+{% endblock %}
+
+
+{% block top%}
+{{test}}
+
+{% if schedules %}
+
+
+{% for schedule in schedules %}
+
+{{schedule.Teach_content }}
+{{schedule.Teach_time    }}
+
+{{schedule.Class         }}
+
+<a href="/schedule/edit/{{schedule.id}}">修改</a>
+<br/>
+{% endfor %}
+{%endif%}
+{% endblock %}

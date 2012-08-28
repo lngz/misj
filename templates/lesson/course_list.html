@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block left%}
+<center>
+<a href="/schedule/assign">指派老师课程</a><br/>
+<a href="/schedule/set">单独指派老师课程</a><br/>
+<a href="/schedule">列出所有老师课程</a><br/>    
+
+<br/>
+<br/>
+<br/>
+
+<a href='/iwasaki/lesson/'>课程列表</a>
+
+
+
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> </center>
+{% endblock %}
+
+{% block top%}
+
+{% if object_list %}
+
+<ul id="user-list" class="no-margin no-padding">
+{% for course_dict in object_list %}
+{{course_dict.id}}. <a href="edit/{{course_dict.id}}"> {{course_dict.courcename }}</a>|
+
+{{course_dict.course_no    	    }}|
+{{course_dict.course_type 	    }}|
+{{course_dict.cource_time         }}|
+
+<a href='/iwasaki/lesson/delete/{{course_dict.id}}'> 删除</a>
+<br> 
+{% endfor %}
+
+</ul>
+{%endif%}
+
+<a href='/iwasaki/lesson/add'>添加新课</a>
+{% endblock %}

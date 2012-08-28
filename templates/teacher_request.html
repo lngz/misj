@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block top%}
+
+{% if requestlist %}
+
+{% for req in requestlist %}
+
+
+{% get_free_comment_count for lesson.teacher_request req.id as comment_count %}
+{% get_free_comment_list for lesson.teacher_request req.id  as comment_list %}
+
+{{req.contents|escape      }}<br>
+{{req.time 	}}|
+
+{% for comment in comment_list %}
+　
+	<div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+		<span class="comnum"><a id="c{{ comment.id }}" href="#c{{ comment.id }}"></a></span>
+		<p><b>{{ comment.person_name|escape }}</b> :  {{ comment.submit_date|date:"Y/m/j" }} at {{ comment.submit_date|date:"P" }}:</p>
+		{{ comment.comment|escape|urlizetrunc:40|linebreaks }}
+		
+	</div>
+{% endfor %}
+
+<hr>
+
+<br>
+
+{% endfor %}
+
+{%endif%}
+
+
+<form method="post" action=".">
+
+{{form.contents}} <br/>
+
+<input type="submit" value="submit">
+
+</form>
+
+{% endblock %}

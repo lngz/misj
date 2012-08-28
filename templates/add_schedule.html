@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block top%}
+
+{{ form.error_dict  }}
+
+<style type="text/css">
+<!--            
+       textarea { width:350px; height:200px }
+-->     
+        　
+</style>　
+{{course}}
+<form method="post" action=".">
+
+    
+    {{form.teach_memo 	}}<br/>
+    
+    
+
+<input type="submit" value="submit">
+</form>
+
+{% endblock %}

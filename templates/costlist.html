@@ -1,0 +1,52 @@
+{% extends "managebase.html" %}
+{% block top%}
+
+<table width="90%" border="1">
+  <tr>
+    <td>姓名</td>
+    <td>服务费总额</td>
+    <td>培训费</td>
+    <td>保证金总额</td>
+  </tr>
+  
+{% for stu in stu_list %}
+
+  <tr>
+    <td>{{stu.name 			    }}</td>
+    <td>{{stu.Servicecharges       }}</td>
+    <td>{{stu.trainingcharge }}</td>
+    <td>{{stu.Margin  		        }}</td>
+  </tr>
+
+
+{% endfor %}
+
+</table>
+
+
+<br/>
+<table width="200" border="1">
+  <tr>
+    <td>成本合计</td>
+    <td>{{costall}}</td>
+  </tr>
+  <tr>
+    <td>服务费合计</td>
+    <td>{{Servicecharges }}</td>
+  </tr>
+  <tr>
+    <td>培训费合计</td>
+    <td>{{trainingcharge }}</td>
+  </tr>
+  <tr>
+    <td>保证金合计</td>
+    <td>{{Margin         }}</td>
+  </tr>
+</table>
+
+
+
+
+
+
+{% endblock %}
