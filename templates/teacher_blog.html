@@ -5,7 +5,7 @@
 {% if bloglist %}
 
 {% for blog in bloglist %}
-{% get_free_comment_count for lesson.teacher_blog blog.id as comment_count %}
+{% get_comment_count for lesson.teacher_blog blog.id as comment_count %}
 
 <a href='{{blog.id}}'>{{blog.title 	    }} </a>  作者：{{blog.teacher}} 发布时间：{{blog.time 	}}|<br/>
 <pre>{{blog.contents|escape }}</pre>
@@ -23,7 +23,7 @@
 
 
 <form method="post" action=".">
-
+{% csrf_token %}
     
 标题：
 {{form.title}} <br/>

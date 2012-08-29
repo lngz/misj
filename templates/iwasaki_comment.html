@@ -14,8 +14,8 @@
 {{schedule.teacher}}さん：<br/>
 {{schedule.teach_memo}}
 <br/>
-{% get_free_comment_count for lesson.schedule schedule.id as comment_count %}
-{% get_free_comment_list for lesson.schedule schedule.id  as comment_list %}
+{% get_comment_count for lesson.schedule schedule.id as comment_count %}
+{% get_comment_list for lesson.schedule schedule.id  as comment_list %}
 
 {% for comment in comment_list %}
 回复:

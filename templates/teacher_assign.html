@@ -4,7 +4,7 @@
 {{teacher.username}} 现正教 {{teacher.Class}}
 <br/>
 <form method="post" action=".">
-
+{% csrf_token %}
 现分配  {{form.classname}} <br/>
 
 <input type="submit" value="submit">

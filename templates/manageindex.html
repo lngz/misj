@@ -7,8 +7,8 @@
 {% for req in requestlist %}
 
 
-{% get_free_comment_count for lesson.teacher_request req.id as comment_count %}
-{% get_free_comment_list for lesson.teacher_request req.id  as comment_list %}
+{% get_comment_count for lesson.teacher_request req.id as comment_count %}
+{% get_comment_list for lesson.teacher_request req.id  as comment_list %}
 
 {{req.teacher     }}说：<br/>
 <a href='/manage/reply/{{req.id}}'>{{req.contents      }} </a>

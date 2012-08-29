@@ -9,8 +9,8 @@
 {{teacher_req.time 	}}<br/>
 
 
-{% get_free_comment_count for lesson.teacher_request teacher_req.id as comment_count %}
-{% get_free_comment_list for lesson.teacher_request teacher_req.id  as comment_list %}
+{% get_comment_count for lesson.teacher_request teacher_req.id as comment_count %}
+{% get_comment_list for lesson.teacher_request teacher_req.id  as comment_list %}
 
 
 <br>
@@ -26,7 +26,7 @@ Reply:
 	</div>
 {% endfor %}
 <h2>回复：</h2>
-{% free_comment_form for lesson.teacher_request teacher_req.id %}
+{% render_comment_form for lesson.teacher_request teacher_req.id %}
 
 {% endblock %}
 

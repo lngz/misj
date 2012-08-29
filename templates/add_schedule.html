@@ -11,7 +11,7 @@
 </style>　
 {{course}}
 <form method="post" action=".">
-
+{% csrf_token %}
     
     {{form.teach_memo 	}}<br/>
     

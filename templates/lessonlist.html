@@ -14,8 +14,8 @@
 {% for sch_list in schedule %}
 
 
-{% get_free_comment_count for lesson.schedule sch_list.id as comment_count %}
-{% get_free_comment_list for lesson.schedule sch_list.id  as comment_list %}
+{% get_comment_count for lesson.schedule sch_list.id as comment_count %}
+{% get_comment_list for lesson.schedule sch_list.id  as comment_list %}
 
 
 课程：{{sch_list.Teach_content }}<br/>

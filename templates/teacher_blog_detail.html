@@ -4,8 +4,8 @@
 
 
 
-{% get_free_comment_count for lesson.teacher_blog blog.id as comment_count %}
-{% get_free_comment_list for lesson.teacher_blog blog.id  as comment_list %}
+{% get_comment_count for lesson.teacher_blog blog.id as comment_count %}
+{% get_comment_list for lesson.teacher_blog blog.id  as comment_list %}
 
 
 {{blog.title 	    }}   作者：{{blog.teacher}} 发布时间：{{blog.time 	}}|<br/>
@@ -25,7 +25,7 @@
 {% endfor %}
 
 <h2>Post a comment</h2>
-{% free_comment_form for lesson.teacher_blog blog.id %}
+{% render_comment_form for lesson.teacher_blog blog.id %}
 
 
 

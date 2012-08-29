@@ -2,7 +2,7 @@
 from django.template import Context, loader
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
-from django.newforms import form_for_model
+
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -11,7 +11,7 @@ from django.db import connection
 
 
 import datetime
-import HTMLCalendar
+#import HTMLCalendar
 
 from  siteforms import *
 
@@ -111,13 +111,13 @@ def regist(request):
 
         if form.is_valid():
 
-            loginname = form.clean_data['loginname']
-            username = form.clean_data['username']
-            password = form.clean_data['password']
-            rule_no =  form.clean_data['rule_no']
-            intro =  form.clean_data['intro']
-            contact =  form.clean_data['contact']
-            email =  form.clean_data['email']
+            loginname = form.cleaned_data['loginname']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            rule_no =  form.cleaned_data['rule_no']
+            intro =  form.cleaned_data['intro']
+            contact =  form.cleaned_data['contact']
+            email =  form.cleaned_data['email']
             
             userid = User.objects.create_user(username=loginname,email=email,password=password)
             new_usr_profile = UserProfile(user = userid,
@@ -163,11 +163,11 @@ def lessonlist(request) :      #当前教师课程表列表
 
        # print caldict
     
-    cal = HTMLCalendar.MonthCal()
+    #cal = #HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + ""#cal.render(y,m,caldict[y][m]) 
 
 
     c = Context({
@@ -187,8 +187,8 @@ def lessoncomment(request, course_id) :
         form = CommentForm(request.POST)
         if form.is_valid():
 
-            #Teach_content =  form.clean_data['id_Teach_content']
-            teach_memo =  form.clean_data['teach_memo']
+            #Teach_content =  form.cleaned_data['id_Teach_content']
+            teach_memo =  form.cleaned_data['teach_memo']
         
             user = request.user
             teach_date=datetime.datetime.now()
@@ -222,8 +222,8 @@ def commentedit(request, course_id) :
         form = CommentForm(request.POST)
         if form.is_valid():
 
-            #Teach_content =  form.clean_data['id_Teach_content']
-            teach_memo =  form.clean_data['teach_memo']
+            #Teach_content =  form.cleaned_data['id_Teach_content']
+            teach_memo =  form.cleaned_data['teach_memo']
         
             user = request.user
             teach_date=datetime.datetime.now()
@@ -283,10 +283,10 @@ def studentabsent(request,stu_id) :
     if request.method == 'POST':
         form = AbsentForm(request.POST)
         if form.is_valid():
-            absent_course =  form.clean_data['absent_course']
-            reason =  form.clean_data['reason']
-            absentdate =  form.clean_data['absentdate']
-            am_or_pm =  form.clean_data['am_or_pm']
+            absent_course =  form.cleaned_data['absent_course']
+            reason =  form.cleaned_data['reason']
+            absentdate =  form.cleaned_data['absentdate']
+            am_or_pm =  form.cleaned_data['am_or_pm']
             new_absent = absent( student=student.objects.get(id=stu_id),
                                  absent_course=absent_course,
                                  absentdate=absentdate,
@@ -309,9 +309,9 @@ def studentscore(request,stu_id) :
     if request.method == 'POST':
         form = scoreForm(request.POST)
         if form.is_valid():
-            type =  form.clean_data['type']
-            Description =  form.clean_data['Description']
-            score =  form.clean_data['score']
+            type =  form.cleaned_data['type']
+            Description =  form.cleaned_data['Description']
+            score =  form.cleaned_data['score']
            
             new_scores = scores( student=student.objects.get(id=stu_id),
                                  type = type,
@@ -339,7 +339,7 @@ def requestlist(request):
     if request.method == 'POST':
         form = RequestForm(request.POST)
         if form.is_valid():
-            contents =  form.clean_data['contents']
+            contents =  form.cleaned_data['contents']
             new_request = teacher_request( teacher=request.user,
                                      contents = contents,
                                      time = datetime.datetime.now(),
@@ -390,11 +390,11 @@ def iwasaki_teach(request,teacher_id):
 
        # print caldict
     
-    cal = HTMLCalendar.MonthCal()
+    #cal = HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + ""#cal.render(y,m,caldict[y][m]) 
 
 
     c = Context({
@@ -417,8 +417,8 @@ def iwasaki_comment(request,schedule_id):
         
         if form.is_valid():
 
-            #Teach_content =  form.clean_data['id_Teach_content']
-            iwasaki_memo =  form.clean_data['teach_memo']
+            #Teach_content =  form.cleaned_data['id_Teach_content']
+            iwasaki_memo =  form.cleaned_data['teach_memo']
             theschedule = schedule.objects.get(id=schedule_id)
             theschedule.iwasaki_memo = iwasaki_memo
             theschedule.save()
@@ -445,9 +445,9 @@ def blog(request) :
         
         if form.is_valid():
 
-            #Teach_content =  form.clean_data['id_Teach_content']
-            title =  form.clean_data['title']
-            contents =  form.clean_data['contents']
+            #Teach_content =  form.cleaned_data['id_Teach_content']
+            title =  form.cleaned_data['title']
+            contents =  form.cleaned_data['contents']
             new_blog = teacher_blog( teacher=request.user,
                                      title = title,
                                      contents = contents,
@@ -511,8 +511,8 @@ def teacher_assign(request,object_id):
         
         if form.is_valid():
 
-            #Teach_content =  form.clean_data['id_Teach_content']
-            classname =  form.clean_data['classname']
+            #Teach_content =  form.cleaned_data['id_Teach_content']
+            classname =  form.cleaned_data['classname']
             #print classname
             theteacher = UserProfile.objects.get(id=object_id)
             theteacher.Class = classname
@@ -536,10 +536,10 @@ def scheduleassign(request):
         
         if form.is_valid():
 
-            classname =  form.clean_data['classname']
-            startdate =  form.clean_data['startdate']
-            enddate =  form.clean_data['enddate']
-            teacher =  form.clean_data['teacher']
+            classname =  form.cleaned_data['classname']
+            startdate =  form.cleaned_data['startdate']
+            enddate =  form.cleaned_data['enddate']
+            teacher =  form.cleaned_data['teacher']
 
             thecourse = course.objects.all().order_by('course_no')
             #print thecourse
@@ -574,10 +574,10 @@ def scheduleset(request):
         form = schedulesetForm(request.POST)
         
         if form.is_valid():
-            courseid = form.clean_data['course']
-            classname =  form.clean_data['classname']
-            startdate =  form.clean_data['startdate']
-            teacher =  form.clean_data['teacher']
+            courseid = form.cleaned_data['course']
+            classname =  form.cleaned_data['classname']
+            startdate =  form.cleaned_data['startdate']
+            teacher =  form.cleaned_data['teacher']
 
 
             new_schedule = schedule( Teach_content = courseid,
@@ -623,11 +623,11 @@ def schedulelistbyteacher(request,teacher_id) :
 
        # print caldict
     
-    cal = HTMLCalendar.MonthCal()
+    #cal = HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + "" #cal.render(y,m,caldict[y][m]) 
 
 
     
@@ -704,3 +704,10 @@ def classstudent(request,class_id) :
                               {  'stu_list':stu_list,
                                  
                                  })
+
+def test(request) :
+    
+    return HttpResponse("You're looking at the results of poll ")
+
+
+

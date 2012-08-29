@@ -9,7 +9,7 @@
 
 
 <form action="." method="post">
-    
+{% csrf_token %}    
 
 <p> 课程    :{{form.Teach_content  }}</p>
 <p> 时间    :{{form.Teach_time  }}</p>

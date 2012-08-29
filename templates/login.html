@@ -10,6 +10,7 @@
 {% endif %}
 
 <form method="post" action=".">
+{% csrf_token %}
 <table>
 <tr><td>用户名ウーサー： </td><td>{{ form.username }}</td></tr>
 <tr><td>口令パスポト： </td><td>{{ form.password }}</td></tr>

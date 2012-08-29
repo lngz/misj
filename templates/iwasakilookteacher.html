@@ -40,8 +40,8 @@
     <td colspan="3">{{sch_list.teach_memo }}<br/>
         
 
-{% get_free_comment_count for lesson.schedule sch_list.id as comment_count %}
-{% get_free_comment_list for lesson.schedule sch_list.id  as comment_list %}
+{% get_comment_count for lesson.schedule sch_list.id as comment_count %}
+{% get_comment_list for lesson.schedule sch_list.id  as comment_list %}
 
 {% for comment in comment_list %}
 
