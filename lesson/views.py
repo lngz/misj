@@ -11,7 +11,7 @@ from django.db import connection
 
 
 import datetime
-#import HTMLCalendar
+from calendar import HTMLCalendar
 
 from  siteforms import *
 
@@ -163,11 +163,11 @@ def lessonlist(request) :      #当前教师课程表列表
 
        # print caldict
     
-    #cal = #HTMLCalendar.MonthCal()
+    cal = HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + ""#cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + cal.render(y,m,caldict[y][m]) 
 
 
     c = Context({
@@ -196,7 +196,7 @@ def lessoncomment(request, course_id) :
             
             new_schedule = schedule( Teach_content = course.objects.get(id=course_id),
                                  Teach_time    = teach_date,
-                                 teacher       = user ,
+                                 teacher       = user_profile ,
                                  Class         = user_profile.Class,
                                  teach_memo    = teach_memo
                                )
@@ -340,7 +340,7 @@ def requestlist(request):
         form = RequestForm(request.POST)
         if form.is_valid():
             contents =  form.cleaned_data['contents']
-            new_request = teacher_request( teacher=request.user,
+            new_request = teacher_request( teacher=request.user.get_profile(),
                                      contents = contents,
                                      time = datetime.datetime.now(),
                                      )
@@ -390,11 +390,11 @@ def iwasaki_teach(request,teacher_id):
 
        # print caldict
     
-    #cal = HTMLCalendar.MonthCal()
+    cal = HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + ""#cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + cal.render(y,m,caldict[y][m]) 
 
 
     c = Context({
@@ -448,7 +448,9 @@ def blog(request) :
             #Teach_content =  form.cleaned_data['id_Teach_content']
             title =  form.cleaned_data['title']
             contents =  form.cleaned_data['contents']
-            new_blog = teacher_blog( teacher=request.user,
+            user_profile = request.user.get_profile()
+            
+            new_blog = teacher_blog( teacher = user_profile,
                                      title = title,
                                      contents = contents,
                                      time = datetime.datetime.now(),
@@ -623,11 +625,11 @@ def schedulelistbyteacher(request,teacher_id) :
 
        # print caldict
     
-    #cal = HTMLCalendar.MonthCal()
+    cal = HTMLCalendar.MonthCal()
     caltext = ''
     for y in caldict.keys():
         for m in caldict[y]:
-            caltext = caltext + "" #cal.render(y,m,caldict[y][m]) 
+            caltext = caltext + cal.render(y,m,caldict[y][m]) 
 
 
     
